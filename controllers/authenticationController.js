@@ -50,7 +50,12 @@ const login = async (req, res) => {
     if(!validPassword)
       return res.status(400).send({ message: "Invalid email or password" });
     
-    const token = user.generateAuthToken();
+      const token = jwt.sign(
+        { _id: user._id, name: user.name, isAdmin: user.isAdmin }, // Token payload with user-specific data.
+        process.env.JWT_SECRET,
+        { expiresIn: "7days" }
+      );
+
      res.status(200).send({data:token, message: "Signing in please wait..." });
 };
 

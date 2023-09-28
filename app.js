@@ -6,6 +6,7 @@ require ("express-async-errors")
 
 const userRoutes = require('./Routes/users.route');
 const authRoutes = require('./Routes/auth.route');
+const songRoutes = require('./Routes/song.route');
 
 
 const app = express();
@@ -15,5 +16,6 @@ app.use(cors());
 
 app.use("/api/users", userRoutes);
 app.use("/api/login", authRoutes);
+app.use("/api/songs", songRoutes);
 
 module.exports = app;
