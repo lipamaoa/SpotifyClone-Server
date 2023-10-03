@@ -14,7 +14,7 @@ const isAuthenticated = (req, res, next) => {
         message: "Access denied, invalid token",
       });
     } else {
-      req.user = validToken.user;
+      req.user = validToken;
       next();
     }
   });
